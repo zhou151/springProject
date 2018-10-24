@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.zhou.dao.entity.User;
-import com.zhou.service.UserService;
+import com.zhou.service.inter.UserServiceInter;
 
 @Controller
 public class IndexController
 {
-	@Autowired UserService userService;
+	@Autowired UserServiceInter userService;
 
 	public PageInfo<User> select(int page ,int pageSize)
 	{
