@@ -1,4 +1,4 @@
-package com.zhou.dao.interfaces;
+package com.zhou.dao;
 
 import java.util.List;
 

@@ -59,6 +59,7 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<!-- <tx:jta-transaction-manager /> -->
 	<!-- 6.1、启用事务注解 -->
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
