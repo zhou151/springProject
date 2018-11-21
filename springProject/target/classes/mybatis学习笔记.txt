@@ -1,0 +1,72 @@
+mybatis学习笔记(不依赖spring,方便学习)
+		一 依赖引入
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.6</version>
+		</dependency>
+		
+		二--> 编写dao接口........
+		
+		三--> 编写mybatis_config
+				<mappers>								
+					<mapper resource="com/zhou/dao/mapper/UserMapper.xml" />
+				</mappers>
+				mapper放入dao接口对应的的xml
+				
+		四--> 编写dao接口对应的的xml
+			  <mapper namespace="com.zhou.dao.UserMapper">
+			  com.zhou.dao.UserMapper 指的是对应 的dao接口
+			  4.1 xml和dao接口同名
+			  4.2 <insert> <delete><update><select> 中 id 同 dao 方法名
+			  
+			  4.3 <select> 返回值用 resultType 定义,填写限定名，
+			  		     返回list同样,只需在dao接口中,声明返回值List<entity>即可
+			  		     
+			  		  4.4   实体类属性 与 数据库表 字段 的关系映射 下面为 例子
+			  		     
+			  		     方案1 - 加别名
+			  		   <select id="getAllBlog" resultType="com.zhou.entity.Blog">
+							SELECT 
+								b_id as bId,
+								u_id as uId,
+								b_time as createTime,
+								b_pageview as pageView,
+								b_title as title,
+								b_body as body,
+								b_classify as classify
+							from blog limit #{param1},#{param2}
+						</select>
+						 
+						 方案2 - 添加 resultMap
+						 <resultMap id="blogList" type="com.zhou.entity.Blog">
+					        <id column="b_id" property="bId" />
+					        <result column="u_id" property="uId" />
+					        <result column="b_time" property="createTime" />
+					        <result column="b_pageview" property="pageView" />
+					        <result column="b_title" property="title" />
+					        <result column="b_body" property="body" />
+					        <result column="b_classify" property="classify" />
+					    </resultMap>
+					    
+					    <select id="getAllBlog" resultMap="blogList">
+							SELECT  * from blog limit #{param1},#{param2}
+						</select>
+						
+				4.5 <insert> <delete><update> 
+				标签返回影响的数据条数
+				标签只需在接口中方法声明返回类型(int , Integer , Boolean)	 
+			  	Boolean 为0 false ,大于0返回true	  
+			  	
+			  	4.6 多参数传入 例子
+			  	public Boolean insertUser( Integer id,String name);
+			  	
+			  	对应xml写法
+			  	<insert id="insertUser">
+			    	insert into user values(${param1},#{param2})
+			    </insert>
+			    param1为参数1  param2为参数2 以此类推
+			    
+			    
+			    
+			  

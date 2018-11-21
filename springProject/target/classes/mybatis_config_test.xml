@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="druid.properties" />
+	<!-- mybatis的配置环境 -->
+	<environments default="development">
+		<!-- mybatis的配置环境 -->
+		<environment id="development">
+			<!-- 事物管理配置 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源的选择 -->
+			<dataSource type="POOLED">
+				<!-- 数据库链接的配置 -->
+				<property name="driver" value="${druid.driverClassName}" />
+				<property name="url" value="${druid.url}" />
+				<property name="username" value="${druid.username}" />
+				<property name="password" value="${druid.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>								
+		<mapper resource="com/zhou/dao/mapper/UserMapper.xml" />
+	</mappers>
+	
+</configuration>

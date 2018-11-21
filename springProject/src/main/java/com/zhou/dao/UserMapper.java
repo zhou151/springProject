@@ -11,6 +11,5 @@ public interface UserMapper
 
 	public List<User> getUser();
 
-	public Boolean insertUser(@Param(value = "id") Integer id,
-			@Param(value = "name") String name);
+	public Boolean insertUser( Integer id,String name);
 }

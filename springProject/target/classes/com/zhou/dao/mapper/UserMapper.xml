@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhou.dao.interfaces.UserMapper">
+<mapper namespace="com.zhou.dao.UserMapper">
 
-    <select id="getUser"  resultType="User">
-      select * from user 
+	<!--  resul="com.zhou.dao.entity.User"  -->
+
+    <select id="getUser" resultType="com.zhou.dao.entity.User">
+      select u_id as id , u_username as username from user 
     </select>
     
     <insert id="insertUser">
