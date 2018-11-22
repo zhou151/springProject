@@ -37,7 +37,7 @@ public class SqlSessionFactoryUtil {
 	public static SqlSession getOpenSession() {
 		SqlSession session=null;
         try {
-            session = sqlSessionFactory.openSession();
+            session = sqlSessionFactory.openSession(true);
         } catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
